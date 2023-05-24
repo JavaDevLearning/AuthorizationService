@@ -1,5 +1,6 @@
 package ru.netology.rest.advice;
 
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -21,6 +22,10 @@ public class ExceptionHandlerAdvice {
     public ResponseEntity<String> unauthorizedUserHandler(UnauthorizedUser e) {
         System.out.println("UnauthorizedUser: " + e.getMessage());
         return new ResponseEntity<>(e.getMessage(), UNAUTHORIZED);
+    }
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<String> constraintViolationHandler(ConstraintViolationException e) {
+        return new ResponseEntity<>(e.getMessage(), BAD_REQUEST);
     }
 
 }

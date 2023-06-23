@@ -1,11 +1,12 @@
 package ru.netology.rest.advice;
 
-import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.netology.rest.exception.InvalidCredentials;
 import ru.netology.rest.exception.UnauthorizedUser;
+
+import javax.validation.ConstraintViolationException;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
